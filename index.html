@@ -64,25 +64,23 @@
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 relative z-10">
                 
                 <!-- Profile Image Section -->
-                <div class="w-32 h-32 rounded-full border-4 border-white/80 bg-brand-100 shadow-md shrink-0 overflow-hidden relative flex items-center justify-center">
-                    <!-- 
-                        จุดใส่รูปภาพ: 
-                        1. เปลี่ยน URL ใน src="..." เป็นที่อยู่อยู่ของรูปภาพของคุณ 
-                           (เช่น "profile.jpg" หรือ URL รูปภาพออนไลน์)
-                        2. onerror จะสลับไปแสดงไอคอนอัตโนมัติหากยังไม่มีรูปหรือโหลดรูปไม่สำเร็จ
-                    -->
-                    <img 
-                        src="ใส่_URL_รูปภาพของคุณที่นี่.jpg" 
-                        alt="จันทรัศม์ ชนะกุล" 
-                        class="w-full h-full object-cover"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    >
-                    <!-- Fallback Icon กรณีไม่มีรูปภาพหรือรูปโหลดไม่ได้ -->
-                    <div class="hidden absolute inset-0 items-center justify-center text-brand-700 font-bold text-4xl bg-brand-100">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-                </div>
-                
+                <!-- Profile Image Section -->
+<div class="w-32 h-32 rounded-full border-4 border-white/80 bg-brand-100 shadow-md shrink-0 overflow-hidden relative flex items-center justify-center">
+    
+    <!-- รูปภาพโปรไฟล์ของคุณ -->
+    <img 
+        src="023n.jpg" 
+        alt="จันทรัศม์ ชนะกุล" 
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    >
+
+    <!-- Fallback Icon กรณีรูปโหลดไม่ขึ้น -->
+    <div class="hidden absolute inset-0 items-center justify-center text-brand-700 font-bold text-4xl bg-brand-100">
+        <i class="fa-solid fa-user-graduate"></i>
+    </div>
+
+</div>
                 <!-- Basic Info -->
                 <div class="text-center sm:text-left space-y-2">
                     <div class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-medium tracking-wide text-brand-50 mb-1">
