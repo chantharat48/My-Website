@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Editor & Live Preview - จันทรัศม์ ชนะกุล</title>
+    <title>CV - จันทรัศม์ ชนะกุล</title>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,6 +15,7 @@
             --text-muted: #607d8b;
             --bg-light: #fcf8f9;
             --white: #ffffff;
+            --border-color: #f48fb1;
         }
 
         * {
@@ -25,93 +26,15 @@
         }
 
         body {
-            background-color: #f0f2f5;
+            background-color: #f5f5f5;
             color: var(--text-dark);
+            line-height: 1.6;
             padding: 20px 10px;
         }
 
-        .editor-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .editor-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Control Panel */
-        .control-panel {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            height: fit-content;
-        }
-
-        .control-panel h2 {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-dark);
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(216, 27, 96, 0.2);
-        }
-
-        .btn-download {
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .btn-download:hover {
-            background-color: #c2185b;
-        }
-
-        /* CV Preview Card */
         .cv-container {
+            max-width: 850px;
+            margin: 0 auto;
             background: var(--white);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             border-radius: 12px;
@@ -120,11 +43,13 @@
             flex-direction: column;
         }
 
+        /* Header / Banner */
         .header {
             background: linear-gradient(135deg, #e91e63, #f48fb1);
             color: var(--white);
-            padding: 35px 25px;
+            padding: 40px 30px;
             text-align: center;
+            position: relative;
         }
 
         .profile-img-container {
@@ -132,8 +57,8 @@
         }
 
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--white);
@@ -145,18 +70,20 @@
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
         .header p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 300;
             opacity: 0.95;
         }
 
+        /* Layout Main Body */
         .content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            min-height: 450px;
+            min-height: 500px;
         }
 
         @media (max-width: 650px) {
@@ -165,18 +92,19 @@
             }
         }
 
+        /* Sidebar Left */
         .sidebar {
             background-color: var(--bg-light);
-            padding: 25px 20px;
+            padding: 30px 20px;
             border-right: 1px solid #f8bbd0;
         }
 
         .section-title-side {
             color: var(--primary);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 4px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
             border-bottom: 2px solid var(--primary-light);
             display: flex;
             align-items: center;
@@ -185,21 +113,21 @@
 
         .info-list {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .info-list li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             color: var(--text-dark);
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 10px;
         }
 
         .info-list i {
             color: var(--primary);
-            margin-top: 3px;
+            margin-top: 4px;
             width: 16px;
         }
 
@@ -209,11 +137,12 @@
 
         .skills-list li {
             background-color: var(--white);
-            padding: 7px 10px;
+            padding: 8px 12px;
             margin-bottom: 8px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-left: 3px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -223,26 +152,27 @@
             color: var(--primary);
         }
 
+        /* Main Content Right */
         .main-content {
-            padding: 25px 20px;
+            padding: 30px 25px;
         }
 
         .section-title-main {
             color: var(--primary);
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 4px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
             border-bottom: 2px solid var(--primary-light);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 18px;
-            margin-bottom: 18px;
+            padding-left: 20px;
+            margin-bottom: 20px;
             border-left: 2px solid var(--primary-light);
         }
 
@@ -258,47 +188,53 @@
         }
 
         .timeline-item h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-dark);
             font-weight: 600;
         }
 
         .timeline-item .sub {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--primary);
             font-weight: 500;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .timeline-item p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
         .portfolio-card {
             background-color: var(--primary-soft);
-            padding: 10px 12px;
+            padding: 12px 15px;
             border-radius: 8px;
             border-left: 4px solid var(--primary);
-            margin-bottom: 10px;
         }
 
         .portfolio-card h4 {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-dark);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .portfolio-card p {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
         .footer {
             text-align: center;
-            padding: 12px;
+            padding: 15px;
             background-color: var(--bg-light);
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             border-top: 1px solid var(--primary-light);
         }
@@ -306,91 +242,50 @@
 </head>
 <body>
 
-    <div class="editor-container">
-        <!-- ฝั่งซ้าย: แผงควบคุมแก้ไขข้อมูล -->
-        <div class="control-panel">
-            <h2><i class="fa-solid fa-pen-to-square"></i> แก้ไขข้อมูลแบบเรียลไทม์</h2>
-            
-            <div class="form-group">
-                <label>ชื่อไฟล์/ลิงก์ รูปโปรไฟล์</label>
-                <input type="text" id="in-img" value="profile.jpg" placeholder="profile.jpg หรือ ลิงก์รูป">
+    <div class="cv-container">
+        <!-- ส่วนหัวข้อ & รูปโปรไฟล์ -->
+        <header class="header">
+            <div class="profile-img-container">
+                <!-- วางไฟล์รูปถ่ายชื่อ profile.jpg ไว้โฟลเดอร์เดียวกับไฟล์นี้ -->
+                <img src="023n.jpg" alt="จันทรัศม์ ชนะกุล" class="profile-img">
             </div>
-            
-            <div class="form-group">
-                <label>ชื่อ-นามสกุล</label>
-                <input type="text" id="in-fullname" value="นางสาวจันทรัศม์ ชนะกุล">
-            </div>
+            <h1>นางสาวจันทรัศม์ ชนะกุล</h1>
+            <p>นักเรียนแผนกเทคโนโลยีสารสนเทศ (IT)</p>
+        </header>
 
-            <div class="form-group">
-                <label>ชื่อเล่น</label>
-                <input type="text" id="in-nickname" value="น้ำใส">
-            </div>
+        <div class="content">
+            <!-- คอลัมน์ซ้าย: ข้อมูลส่วนตัว & ความสามารถ -->
+            <aside class="sidebar">
+                <h2 class="section-title-side"><i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว</h2>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-id-card"></i> <span><strong>ชื่อเล่น:</strong> น้ำใส</span></li>
+                    <li><i class="fa-solid fa-cake-candles"></i> <span><strong>อายุ:</strong> 17 ปี</span></li>
+                    <li><i class="fa-solid fa-calendar-day"></i> <span><strong>เกิดวันที่:</strong> 4 สิงหาคม 2009</span></li>
+                </ul>
 
-            <div class="form-group">
-                <label>อายุ</label>
-                <input type="text" id="in-age" value="17 ปี">
-            </div>
+                <h2 class="section-title-side"><i class="fa-solid fa-code"></i> ทักษะความสามารถ</h2>
+                <ul class="skills-list">
+                    <li><i class="fa-brands fa-html5"></i> การพัฒนาเว็บไซต์ (HTML / CSS)</li>
+                    <li><i class="fa-solid fa-laptop-code"></i> พื้นฐานเทคโนโลยีสารสนเทศ</li>
+                    <li><i class="fa-solid fa-pen-ruler"></i> การแต่งกราฟิกและออกแบบเบื้องต้น</li>
+                    <li><i class="fa-solid fa-boxes-packing"></i> การจัดการระบบและข้อมูล</li>
+                </ul>
+            </aside>
 
-            <div class="form-group">
-                <label>วันเกิด</label>
-                <input type="text" id="in-dob" value="4 สิงหาคม 2009">
-            </div>
+            <!-- คอลัมน์ขวา: ประวัติการศึกษา & ผลงาน -->
+            <main class="main-content">
+                <section>
+                    <h2 class="section-title-main"><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h2>
+                    <div class="timeline-item">
+                        <h4>ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</h4>
+                        <div class="sub">ระดับชั้น ปวช. 2/2 | แผนกเทคโนโลยีสารสนเทศ</div>
+                        <p>กำลังศึกษาอยู่ • ปีการศึกษา 2569</p>
+                    </div>
+                </section>
 
-            <div class="form-group">
-                <label>ระดับชั้น / แผนก</label>
-                <input type="text" id="in-class" value="ปวช. 2/2 | แผนกเทคโนโลยีสารสนเทศ">
-            </div>
-
-            <div class="form-group">
-                <label>ปีการศึกษา</label>
-                <input type="text" id="in-year" value="2569">
-            </div>
-
-            <button class="btn-download" onclick="downloadHTML()">
-                <i class="fa-solid fa-download"></i> ดาวน์โหลดไฟล์ index.html
-            </button>
-        </div>
-
-        <!-- ฝั่งขวา: หน้าพรีวิว CV -->
-        <div class="cv-container">
-            <header class="header">
-                <div class="profile-img-container">
-                    <img src="profile.jpg" alt="รูปโปรไฟล์" class="profile-img" id="pv-img" onerror="this.src='https://via.placeholder.com/130/f8bbd0/d81b60?text=Profile'">
-                </div>
-                <h1 id="pv-fullname">นางสาวจันทรัศม์ ชนะกุล</h1>
-                <p>นักเรียนแผนกเทคโนโลยีสารสนเทศ (IT)</p>
-            </header>
-
-            <div class="content">
-                <aside class="sidebar">
-                    <h2 class="section-title-side"><i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว</h2>
-                    <ul class="info-list">
-                        <li><i class="fa-solid fa-id-card"></i> <span><strong>ชื่อเล่น:</strong> <span id="pv-nickname">น้ำใส</span></span></li>
-                        <li><i class="fa-solid fa-cake-candles"></i> <span><strong>อายุ:</strong> <span id="pv-age">17 ปี</span></span></li>
-                        <li><i class="fa-solid fa-calendar-day"></i> <span><strong>เกิดวันที่:</strong> <span id="pv-dob">4 สิงหาคม 2009</span></span></li>
-                    </ul>
-
-                    <h2 class="section-title-side"><i class="fa-solid fa-code"></i> ทักษะความสามารถ</h2>
-                    <ul class="skills-list">
-                        <li><i class="fa-brands fa-html5"></i> การพัฒนาเว็บไซต์ (HTML / CSS)</li>
-                        <li><i class="fa-solid fa-laptop-code"></i> พื้นฐานเทคโนโลยีสารสนเทศ</li>
-                        <li><i class="fa-solid fa-pen-ruler"></i> การแต่งกราฟิกและออกแบบเบื้องต้น</li>
-                        <li><i class="fa-solid fa-boxes-packing"></i> การจัดการระบบและข้อมูล</li>
-                    </ul>
-                </aside>
-
-                <main class="main-content">
-                    <section>
-                        <h2 class="section-title-main"><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h2>
-                        <div class="timeline-item">
-                            <h4>ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</h4>
-                            <div class="sub" id="pv-class">ปวช. 2/2 | แผนกเทคโนโลยีสารสนเทศ</div>
-                            <p>กำลังศึกษาอยู่ • ปีการศึกษา <span id="pv-year">2569</span></p>
-                        </div>
-                    </section>
-
-                    <section style="margin-top: 20px;">
-                        <h2 class="section-title-main"><i class="fa-solid fa-briefcase"></i> ผลงานและความสำเร็จ</h2>
+                <section style="margin-top: 25px;">
+                    <h2 class="section-title-main"><i class="fa-solid fa-briefcase"></i> ผลงานและความสำเร็จ</h2>
+                    <div class="portfolio-grid">
                         <div class="portfolio-card">
                             <h4>การพัฒนาเว็บไซต์และโครงงานสารสนเทศ</h4>
                             <p>ออกแบบและจัดทำเว็บไซต์ CV / Portfolio สำหรับนำเสนอข้อมูลส่วนตัวด้วย HTML/CSS</p>
@@ -399,57 +294,15 @@
                             <h4>กิจกรรมและการเรียนรู้ทางเทคโนโลยี</h4>
                             <p>เข้าร่วมกิจกรรมเชิงปฏิบัติการด้านการเขียนโปรแกรมและการจัดการระบบคอมพิวเตอร์ในสถานศึกษา</p>
                         </div>
-                    </section>
-                </main>
-            </div>
-
-            <footer class="footer">
-                <p>© <span id="pv-ft-year">2569</span> <span id="pv-ft-name">จันทรัศม์ ชนะกุล</span> - Information Technology Portfolio</p>
-            </footer>
+                    </div>
+                </section>
+            </main>
         </div>
+
+        <footer class="footer">
+            <p>© 2569 จันทรัศม์ ชนะกุล - Information Technology Portfolio</p>
+        </footer>
     </div>
 
-    <script>
-        // Real-time Update Script
-        const fields = [
-            { in: 'in-img', pv: 'pv-img', attr: 'src' },
-            { in: 'in-fullname', pv: 'pv-fullname' },
-            { in: 'in-nickname', pv: 'pv-nickname' },
-            { in: 'in-age', pv: 'pv-age' },
-            { in: 'in-dob', pv: 'pv-dob' },
-            { in: 'in-class', pv: 'pv-class' },
-            { in: 'in-year', pv: 'pv-year' }
-        ];
-
-        fields.forEach(f => {
-            const elIn = document.getElementById(f.in);
-            const elPv = document.getElementById(f.pv);
-            
-            elIn.addEventListener('input', () => {
-                if (f.attr === 'src') {
-                    elPv.src = elIn.value;
-                } else {
-                    elPv.textContent = elIn.value;
-                }
-
-                if (f.in === 'in-year') {
-                    document.getElementById('pv-ft-year').textContent = elIn.value;
-                }
-                if (f.in === 'in-fullname') {
-                    document.getElementById('pv-ft-name').textContent = elIn.value;
-                }
-            });
-        });
-
-        // Download HTML File
-        function downloadHTML() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'index.html';
-            a.click();
-        }
-    </script>
 </body>
 </html>
